@@ -3,25 +3,16 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.deppon.component</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>mq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>mq</artifactId>
+  <artifactId>mq-client</artifactId>
   <packaging>pom</packaging>
-  
 
- <dependencies>
-	 <dependency>
-         <groupId>com.pamirs.mq</groupId>
-         <artifactId>pamirs-mq-client</artifactId>
-     </dependency>
- </dependencies>  
-  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <modules>
-    <module>mq-client</module>
-    <module>a</module>
+    <module>client-send</module>
   </modules>
 </project>
