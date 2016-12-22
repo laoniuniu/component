@@ -1,0 +1,14 @@
+ <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+ <!--对账单核销金额更改消息-->
+    <bean id="consumer_demo" class="com.deppon.mq.metaq.Consumer"/>
+    
+    <bean id="upVerifyAmountMsgConsumerManager" class="com.pamirs.mq.client.MqConsumerConcurrentlyManager" init-method="init">
+        <property name="nameServer" value="mq.deppon.namesrv:9876"></property>
+        <property name="consumerGroup" value="CONSUMER_GROUP"></property>
+        <property name="topic" value="CONSUMER_TOPIC"></property>
+        <property name="tags" value="CONSUMER_TAGS"></property>
+        <property name="mqConsumer" ref="consumer_demo"></property>
+    </bean>
+    
+ </beans>

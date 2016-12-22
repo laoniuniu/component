@@ -7,9 +7,9 @@
     <artifactId>mq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
+  <artifactId>mq-producer</artifactId>
+  <name>mq-producer</name>
   
-  <artifactId>mq-client</artifactId>
-  <name>mq-client</name>
   
   
   <url>http://maven.apache.org</url>
@@ -23,5 +23,9 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+      <dependency>
+      	<groupId>com.deppon.component</groupId>
+      	<artifactId>mq-client</artifactId>
+      </dependency>
   </dependencies>
 </project>
