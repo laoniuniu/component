@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+ 
+ 	<bean id="commonScheduleItemDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.deppon.schedule.dao.ScheduleItemDAO"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionScheduleFactory"></property>
+	</bean>
+	
+	<bean id="commonScheduleService" class="com.deppon.schedule.service.ScheduleServiceImpl" />
+	
+	<bean id="commonScheduleManagerFactory" class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory"
+		init-method="init">
+		<property name="zkConfig">
+           <map>
+              <entry key="zkConnectString" value="zk.api.deppon.com:2181" />
+              <entry key="rootPath" value="/schedule/common" />
+              <entry key="zkSessionTimeout" value="60000" />
+              <entry key="userName" value="" />
+              <entry key="password" value="" />
+              <entry key="isCheckParentPath" value="true" />
+           </map>
+       </property>	
+	</bean>
+	
+	<!-- action manager factory  -->
+	<bean id="commonTaskActionManager" class="com.deppon.schedule.service.TaskActionManagerFactory"/>
+
+</beans>

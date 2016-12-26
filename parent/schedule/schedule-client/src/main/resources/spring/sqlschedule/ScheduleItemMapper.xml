@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deppon.schedule.dao.ScheduleItemDAO">
+  <resultMap id="BaseResultMap" type="com.deppon.schedule.model.ScheduleItem">
+    <id column="id" property="id" />
+    <result column="task_type" property="taskType" />
+    <result column="biz_id" property="bizId" />
+    <result column="param" property="param" />
+    <result column="retry_nums" property="retryNums" />
+    <result column="next_retry_time" property="nextRetryTime" />
+    <result column="biz_status" property="bizStatus" />
+    <result column="error_log" property="errorLog" />
+    <result column="own_sign" property="ownSign" />
+    <result column="application" property="application" />
+    <result column="remark" property="remark" />
+    <result column="status" property="status" />
+    <result column="create_date" property="createDate" />
+    <result column="modify_date" property="modifyDate" />
+    <result column="table_num" property="tableNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, task_type, biz_id, param, retry_nums, next_retry_time, biz_status, error_log,
+    own_sign, application, remark, status, create_date, modify_date, table_num
+  </sql>
+
+  
+  <delete id="deleteBySeparate" parameterType="java.util.Map">
+    <!-- delete from T_COM_SCHEDULE where id > 0 pddl 增删改查均需要传table_num字段 -->
+   truncate table cu_schedule_item_${tableNum}
+  </delete>
+  
+  <insert id="insert" parameterType="com.deppon.schedule.model.ScheduleItem">
+    insert into cu_schedule_item ( task_type, biz_id,
+      param, retry_nums, next_retry_time, 
+      biz_status, error_log, own_sign, application,
+      remark, status, create_date, table_num)
+    values ( #{taskType}, #{bizId},#{param}, #{retryNums}, #{nextRetryTime},
+      #{bizStatus}, #{errorLog}, #{ownSign},#{application},#{remark}, #{status},
+      #{createDate}, #{tableNum})
+  </insert>
+  <insert id="insertSelective" parameterType="com.deppon.schedule.model.ScheduleItem">
+    insert into cu_schedule_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskType != null">
+        task_type,
+      </if>
+      <if test="bizId != null">
+        biz_id,
+      </if>
+      <if test="param != null">
+        param,
+      </if>
+      <if test="retryNums != null">
+        retry_nums,
+      </if>
+      <if test="nextRetryTime != null">
+        next_retry_time,
+      </if>
+      <if test="bizStatus != null">
+        biz_status,
+      </if>
+      <if test="errorLog != null">
+        error_log,
+      </if>
+      <if test="ownSign != null">
+        own_sign,
+      </if>
+      <if test="application != null">
+        application,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="tableNum != null">
+        table_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskType != null">
+        #{taskType},
+      </if>
+      <if test="bizId != null">
+        #{bizId},
+      </if>
+      <if test="param != null">
+        #{param},
+      </if>
+      <if test="retryNums != null">
+        #{retryNums},
+      </if>
+      <if test="nextRetryTime != null">
+        #{nextRetryTime},
+      </if>
+      <if test="bizStatus != null">
+        #{bizStatus},
+      </if>
+      <if test="errorLog != null">
+        #{errorLog},
+      </if>
+      <if test="ownSign != null">
+        #{ownSign},
+      </if>
+      <if test="application != null">
+          #{application},
+      </if>
+      <if test="remark != null">
+        #{remark},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="createDate != null">
+        #{create_date},
+      </if>
+      <if test="modifyDate != null">
+        #{modify_date},
+      </if>
+      <if test="tableNum != null">
+        #{tableNum},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.deppon.schedule.model.ScheduleItem">
+    update cu_schedule_item
+    <set>
+      <if test="taskType != null">
+        task_type = #{taskType},
+      </if>
+      <if test="bizId != null">
+        biz_id = #{bizId},
+      </if>
+      <if test="param != null">
+        param = #{param},
+      </if>
+      <if test="retryNums != null">
+        retry_nums = #{retryNums},
+      </if>
+      <if test="nextRetryTime != null">
+        next_retry_time = #{nextRetryTime},
+      </if>
+      <if test="bizStatus != null">
+        biz_status = #{bizStatus},
+      </if>
+      <if test="errorLog != null">
+        error_log = #{errorLog},
+      </if>
+      <if test="ownSign != null">
+        own_sign = #{ownSign},
+      </if>
+      <if test="application != null">
+        application = #{application},
+      </if>
+      <if test="remark != null">
+        remark = #{remark},
+      </if>
+      <if test="status != null">
+        status = #{status},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate},
+      </if>
+      <if test="tableNum != null">
+        table_num = #{tableNum},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.deppon.schedule.model.ScheduleItem">
+    update cu_schedule_item
+    set task_type = #{taskType},
+      biz_id = #{bizId},
+      param = #{param},
+      retry_nums = #{retryNums},
+      next_retry_time = #{nextRetryTime},
+      biz_status = #{bizStatus},
+      error_log = #{errorLog},
+      own_sign = #{ownSign},
+      application = #{application},
+      remark = #{remark},
+      status = #{status},
+      create_date = #{createDate},
+      modify_date = #{modifyDate},
+      table_num = #{tableNum}
+    where id = #{id} and table_num = #{tableNum}
+  </update>
+  
+  <select id="selectList" resultMap="BaseResultMap" parameterType="com.deppon.schedule.model.ScheduleQuery" >
+		select 
+		<include refid="Base_Column_List" />
+		from  cu_schedule_item
+		where status = 1 and (biz_status = 0 or biz_status = 2) and <![CDATA[ retry_nums < 6 ]]>
+		 and <![CDATA[ next_retry_time < #{nextRetryTime}  ]]>
+		 and
+		<foreach collection="data" index="index" item="item" open="(" separator=" or " close=")">
+			<![CDATA[ #{item,jdbcType=BIGINT} =  mod(id,#{taskItemNum,jdbcType=INTEGER}) ]]>
+		</foreach>
+		
+		<if test="taskType != null" >
+		  and task_type = #{taskType}
+		</if>
+		<if test="ownSign != null">
+			and own_sign = #{ownSign}
+		</if>
+        <if test="application != null">
+            and application = #{application}
+        </if>
+        <if test="tableNum != null">
+            and table_num = #{tableNum}
+        </if>
+		<include refid="Data_Where_Plus" />
+  </select>
+  
+  <select id="selectDelayList" resultMap="BaseResultMap" parameterType="com.deppon.schedule.model.ScheduleQuery" >
+		select 
+		<include refid="Base_Column_List" />
+		from  cu_schedule_item
+		where (biz_status= 0 or biz_status = 2) 
+		 and
+		<foreach collection="data" index="index" item="item" open="(" separator=" or " close=")">
+			#{item,jdbcType=BIGINT} = mod(id,#{taskItemNum,jdbcType=INTEGER})
+		</foreach>
+        <if test="tableNum != null">
+          and table_num = #{tableNum}
+        </if>
+		<include refid="Data_Where_Plus" />
+  </select>
+  
+  <sql id="Data_Where_Plus" >
+		<if test="orderBy != null" >
+		order by ${orderBy}
+		</if>
+		<if test="pageSize != null and start != null" >
+		limit #{start}, #{pageSize}
+		</if>
+		<if test="pageSize != null and start == null" >
+		limit #{pageSize}
+		</if>
+   </sql>
+   
+  <update id="update2SucessByPrimaryKey" parameterType="com.deppon.schedule.model.ScheduleItem">
+    update cu_schedule_item
+    set 
+     retry_nums = retry_nums + 1, 
+      biz_status = 1
+    where id = #{id} and  biz_status = #{bizStatus}
+    and table_num = #{tableNum}
+  </update>
+  
+  <update id="update2TransferByPrimaryKey" parameterType="com.deppon.schedule.model.ScheduleItem">
+    update cu_schedule_item
+    set  
+      biz_status = 3
+    where id = #{id} and  biz_status = #{bizStatus}
+    and table_num = #{tableNum}
+  </update>
+  
+  <update id="update2RetryByPrimaryKey" parameterType="com.deppon.schedule.model.ScheduleItem">
+    update cu_schedule_item
+    set  
+      retry_nums = retry_nums + 1,
+      biz_status = 2,
+      next_retry_time = #{nextRetryTime},
+      error_log = #{errorLog}
+    where id = #{id} and table_num = #{tableNum}
+  </update>
+
+  <update id="update2CancelByBizCode" parameterType="com.deppon.schedule.model.ScheduleItem">
+    update cu_schedule_item
+    set
+      biz_status = #{bizStatus},
+      error_log = #{errorLog}
+    where biz_id = #{bizId} and table_num = #{tableNum}
+  </update>
+
+  <select id="selectByBizId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from cu_schedule_item
+    where biz_id = #{bizId} and table_num = #{tableNum}
+  </select>
+  
+</mapper>
