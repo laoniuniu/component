@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+       default-autowire="byName">
+
+    <!-- <import resource="classpath:spring/persistence.xml"/>
+
+    <bean id="billSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:/sqlmap/*Mapper.xml"/>
+        <property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.deppon.dubbo.provider.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="billSqlSessionFactory"/>
+    </bean> -->
+</beans>

@@ -1,23 +1,131 @@
-<?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.deppon.component</groupId>
     <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.deppon.component</groupId>
   <artifactId>dubbo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <distributionManagement>
-    <site>
-      <id>website</id>
-      <url>scp://webhost.company.com/www/website</url>
-    </site>
-  </distributionManagement>
+
+ <dependencyManagement>
+     <dependencies>
+     	<dependency>
+     		<groupId>com.deppon.component</groupId>
+           	<artifactId>dubbo-client</artifactId>
+           	<version>${project.version}</version>
+     	</dependency>
+     	<dependency>
+     		<groupId>com.deppon.component</groupId>
+           	<artifactId>commons</artifactId>
+           	<version>${project.version}</version>
+     	</dependency>
+     	<dependency>
+     		<groupId>com.deppon.component</groupId>
+           	<artifactId>dubbo-provider</artifactId>
+           	<version>${project.version}</version>
+     	</dependency>
+     	
+     	<dependency>
+     		<groupId>com.deppon.component</groupId>
+     		<artifactId>dubbo-consumer</artifactId>
+     		<version>${project.version}</version>
+     	</dependency>
+     	
+     	 <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring_version}</version>
+            </dependency>
+     	 <dependency>
+               <groupId>org.mybatis</groupId>
+               <artifactId>mybatis-spring</artifactId>
+               <version>${mybatis_spring_version}</version>
+           </dependency>
+           <dependency>
+               <groupId>org.mybatis</groupId>
+               <artifactId>mybatis</artifactId>
+               <version>${mybatis_version}</version>
+           </dependency>
+               <dependency>
+               <groupId>org.springframework</groupId>
+               <artifactId>spring-tx</artifactId>
+               <version>${spring_version}</version>
+           </dependency>
+             <dependency>
+               <groupId>org.springframework</groupId>
+               <artifactId>spring-test</artifactId>
+               <version>${spring_version}</version>
+               <scope>test</scope>
+           </dependency>
+            <dependency>
+               <groupId>org.springframework</groupId>
+               <artifactId>spring-context-support</artifactId>
+               <version>${spring_version}</version>
+           </dependency>
+            <dependency>
+	            <groupId>com.alibaba</groupId>
+	            <artifactId>dubbo</artifactId>
+	            <version>${dubbo_version}</version>
+     	</dependency>
+     	    <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback_version}</version>
+            </dependency>
+            <dependency>
+				<groupId>org.logback-extensions</groupId>
+				<artifactId>logback-ext-spring</artifactId>
+				<version>0.1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper_version}</version>
+			</dependency>
+			<dependency>
+                <groupId>com.pamirs.pradar</groupId>
+                <artifactId>pradar-core</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+     </dependencies>
+  </dependencyManagement>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <modules>
+    <module>dubbo-consumer</module>
+    <module>dubbo-provider</module>
+    <module>provider-web</module>
+    <module>dubbo-client</module>
+    <module>consumer-web</module>
+  </modules>
+  
+  
+  
+  <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>deppen Release Repository</name>
+            <url>http://10.230.27.186:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>deppen Snapshot Repository</name>
+            <url>http://10.230.27.186:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+  
 </project>

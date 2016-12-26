@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jy.manager.dao.DemoDOMapper" >
+  <resultMap id="BaseResultMap" type="com.deppon.dubbo.client.model.DemoDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="t_varchar" property="tVarchar" jdbcType="VARCHAR" />
+    <result column="t_date" property="tDate" jdbcType="TIMESTAMP" />
+    <result column="t_int" property="tInt" jdbcType="INTEGER" />
+    <result column="t_decimal" property="tDecimal" jdbcType="DECIMAL" />
+    <result column="t_double" property="tDouble" jdbcType="DOUBLE" />
+    <result column="t_enum" property="tEnum" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.deppon.dubbo.client.model.DemoDO" extends="BaseResultMap" >
+    <result column="t_longtext" property="tLongtext" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, t_varchar, t_date, t_int, t_decimal, t_double, t_enum
+  </sql>
+  <sql id="Blob_Column_List" >
+    t_longtext
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_demo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_demo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.deppon.dubbo.client.model.DemoDO" >
+    insert into t_demo (id, t_varchar, t_date, 
+      t_int, t_decimal, t_double, 
+      t_enum, t_longtext)
+    values (#{id,jdbcType=BIGINT}, #{tVarchar,jdbcType=VARCHAR}, #{tDate,jdbcType=TIMESTAMP}, 
+      #{tInt,jdbcType=INTEGER}, #{tDecimal,jdbcType=DECIMAL}, #{tDouble,jdbcType=DOUBLE}, 
+      #{tEnum,jdbcType=CHAR}, #{tLongtext,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.deppon.dubbo.client.model.DemoDO" >
+    insert into t_demo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tVarchar != null" >
+        t_varchar,
+      </if>
+      <if test="tDate != null" >
+        t_date,
+      </if>
+      <if test="tInt != null" >
+        t_int,
+      </if>
+      <if test="tDecimal != null" >
+        t_decimal,
+      </if>
+      <if test="tDouble != null" >
+        t_double,
+      </if>
+      <if test="tEnum != null" >
+        t_enum,
+      </if>
+      <if test="tLongtext != null" >
+        t_longtext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tVarchar != null" >
+        #{tVarchar,jdbcType=VARCHAR},
+      </if>
+      <if test="tDate != null" >
+        #{tDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tInt != null" >
+        #{tInt,jdbcType=INTEGER},
+      </if>
+      <if test="tDecimal != null" >
+        #{tDecimal,jdbcType=DECIMAL},
+      </if>
+      <if test="tDouble != null" >
+        #{tDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="tEnum != null" >
+        #{tEnum,jdbcType=CHAR},
+      </if>
+      <if test="tLongtext != null" >
+        #{tLongtext,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.deppon.dubbo.client.model.DemoDO" >
+    update t_demo
+    <set >
+      <if test="tVarchar != null" >
+        t_varchar = #{tVarchar,jdbcType=VARCHAR},
+      </if>
+      <if test="tDate != null" >
+        t_date = #{tDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tInt != null" >
+        t_int = #{tInt,jdbcType=INTEGER},
+      </if>
+      <if test="tDecimal != null" >
+        t_decimal = #{tDecimal,jdbcType=DECIMAL},
+      </if>
+      <if test="tDouble != null" >
+        t_double = #{tDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="tEnum != null" >
+        t_enum = #{tEnum,jdbcType=CHAR},
+      </if>
+      <if test="tLongtext != null" >
+        t_longtext = #{tLongtext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.deppon.dubbo.client.model.DemoDO" >
+    update t_demo
+    set t_varchar = #{tVarchar,jdbcType=VARCHAR},
+      t_date = #{tDate,jdbcType=TIMESTAMP},
+      t_int = #{tInt,jdbcType=INTEGER},
+      t_decimal = #{tDecimal,jdbcType=DECIMAL},
+      t_double = #{tDouble,jdbcType=DOUBLE},
+      t_enum = #{tEnum,jdbcType=CHAR},
+      t_longtext = #{tLongtext,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.deppon.dubbo.client.model.DemoDO" >
+    update t_demo
+    set t_varchar = #{tVarchar,jdbcType=VARCHAR},
+      t_date = #{tDate,jdbcType=TIMESTAMP},
+      t_int = #{tInt,jdbcType=INTEGER},
+      t_decimal = #{tDecimal,jdbcType=DECIMAL},
+      t_double = #{tDouble,jdbcType=DOUBLE},
+      t_enum = #{tEnum,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

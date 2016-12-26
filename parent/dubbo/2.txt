@@ -1,0 +1,181 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.deppon.component:dubbo-provider:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework:spring-context:jar -> version (?) vs ${spring_version} @ line 64, column 15
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] dubbo
+[INFO] dubbo-consumer
+[INFO] dubbo-client
+[INFO] dubbo-provider
+[INFO] provider-web
+[INFO] consumer-web Maven Webapp
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dubbo 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ dubbo ---
+[INFO] com.deppon.component:dubbo:pom:0.0.1-SNAPSHOT
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dubbo-consumer 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ dubbo-consumer ---
+[INFO] com.deppon.component:dubbo-consumer:jar:0.0.1-SNAPSHOT
+[INFO] \- junit:junit:jar:3.8.1:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dubbo-client 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/commons/0.0.1-SNAPSHOT/maven-metadata.xml
+991/991 B               Downloaded: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/commons/0.0.1-SNAPSHOT/maven-metadata.xml (991 B at 8.3 KB/sec)
+Downloading: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/parent/0.0.1-SNAPSHOT/maven-metadata.xml
+603/603 B               Downloaded: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/parent/0.0.1-SNAPSHOT/maven-metadata.xml (603 B at 29.4 KB/sec)
+Downloading: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/parent/0.0.1-SNAPSHOT/parent-0.0.1-20161223.093652-2.pom
+3/6 KB      6/6 KB            Downloaded: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/parent/0.0.1-SNAPSHOT/parent-0.0.1-20161223.093652-2.pom (6 KB at 314.7 KB/sec)
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ dubbo-client ---
+[INFO] com.deppon.component:dubbo-client:jar:0.0.1-SNAPSHOT
+[INFO] \- com.deppon.component:commons:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- org.apache.commons:commons-lang3:jar:3.1:compile
+[INFO]    +- com.google.code.gson:gson:jar:2.1:compile
+[INFO]    +- org.slf4j:jul-to-slf4j:jar:1.7.21:compile
+[INFO]    |  \- org.slf4j:slf4j-api:jar:1.7.21:compile
+[INFO]    \- commons-httpclient:commons-httpclient:jar:3.1:compile
+[INFO]       +- commons-logging:commons-logging:jar:1.0.4:compile
+[INFO]       \- commons-codec:commons-codec:jar:1.2:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dubbo-provider 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/dubbo-client/0.0.1-SNAPSHOT/maven-metadata.xml
+996/996 B               Downloaded: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/dubbo-client/0.0.1-SNAPSHOT/maven-metadata.xml (996 B at 27.0 KB/sec)
+Downloading: http://10.230.27.186:8081/nexus/content/groups/public/com/pamirs/pradar/pradar-core/1.0.0-SNAPSHOT/maven-metadata.xml
+996/996 B               Downloaded: http://10.230.27.186:8081/nexus/content/groups/public/com/pamirs/pradar/pradar-core/1.0.0-SNAPSHOT/maven-metadata.xml (996 B at 28.6 KB/sec)
+Downloading: http://10.230.27.186:8081/nexus/content/groups/public/com/pamirs/parent/1.0.0-SNAPSHOT/maven-metadata.xml
+593/593 B               Downloaded: http://10.230.27.186:8081/nexus/content/groups/public/com/pamirs/parent/1.0.0-SNAPSHOT/maven-metadata.xml (593 B at 19.3 KB/sec)
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ dubbo-provider ---
+[INFO] com.deppon.component:dubbo-provider:jar:0.0.1-SNAPSHOT
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.1.RELEASE:compile
+[INFO] +- org.springframework:spring-web:jar:4.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-aop:jar:4.2.1.RELEASE:compile
+[INFO] |     \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] +- org.springframework:spring-tx:jar:4.2.1.RELEASE:compile
+[INFO] +- org.springframework:spring-test:jar:4.2.1.RELEASE:test
+[INFO] +- org.springframework:spring-context:jar:4.2.1.RELEASE:compile
+[INFO] +- org.apache.poi:poi:jar:3.14:compile
+[INFO] |  \- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- org.apache.poi:poi-ooxml:jar:3.14:compile
+[INFO] |  +- org.apache.poi:poi-ooxml-schemas:jar:3.14:compile
+[INFO] |  \- com.github.virtuald:curvesapi:jar:1.03:compile
+[INFO] +- org.apache.xmlbeans:xmlbeans:jar:2.6.0:compile
+[INFO] |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.2.1.RELEASE:compile
+[INFO] +- org.springframework:spring-core:jar:4.2.1.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- com.alibaba:dubbo:jar:2.5.3:compile
+[INFO] |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  \- org.jboss.netty:netty:jar:3.2.5.Final:compile
+[INFO] +- com.101tec:zkclient:jar:0.9:compile
+[INFO] |  \- org.slf4j:slf4j-api:jar:1.6.1:compile
+[INFO] +- org.apache.zookeeper:zookeeper:jar:3.4.9:compile
+[INFO] |  +- jline:jline:jar:0.9.94:compile
+[INFO] |  |  \- junit:junit:jar:3.8.1:compile
+[INFO] |  \- io.netty:netty:jar:3.10.5.Final:compile
+[INFO] +- com.deppon.component:commons:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.apache.commons:commons-lang3:jar:3.1:compile
+[INFO] |  +- com.google.code.gson:gson:jar:2.1:compile
+[INFO] |  \- commons-httpclient:commons-httpclient:jar:3.1:compile
+[INFO] +- com.deppon.component:dubbo-client:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- com.pamirs.pradar:pradar-core:jar:1.0.0-SNAPSHOT:compile
+[INFO] |  \- commons-lang:commons-lang:jar:2.6:compile
+[INFO] \- org.logback-extensions:logback-ext-spring:jar:0.1.4:compile
+[INFO]    \- ch.qos.logback:logback-classic:jar:1.1.7:compile (version managed from 1.1.1)
+[INFO]       \- ch.qos.logback:logback-core:jar:1.1.7:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building provider-web 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/dubbo-provider/0.0.1-SNAPSHOT/maven-metadata.xml
+998/998 B               Downloaded: http://10.230.27.186:8081/nexus/content/groups/public/com/deppon/component/dubbo-provider/0.0.1-SNAPSHOT/maven-metadata.xml (998 B at 31.4 KB/sec)
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ provider-web ---
+[INFO] com.deppon.component:provider-web:war:0.0.1-SNAPSHOT
+[INFO] +- com.deppon.component:dubbo-client:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.deppon.component:commons:jar:0.0.1-SNAPSHOT:compile
+[INFO] |     +- org.apache.commons:commons-lang3:jar:3.1:compile
+[INFO] |     +- com.google.code.gson:gson:jar:2.1:compile
+[INFO] |     +- org.slf4j:jul-to-slf4j:jar:1.7.21:compile
+[INFO] |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+[INFO] +- com.deppon.component:dubbo-provider:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] |  +- org.springframework:spring-webmvc:jar:4.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:4.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:4.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-aop:jar:4.2.1.RELEASE:compile
+[INFO] |  |     \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.2.1.RELEASE:compile
+[INFO] |  +- org.apache.poi:poi:jar:3.14:compile
+[INFO] |  |  \- commons-codec:commons-codec:jar:1.10:compile
+[INFO] |  +- org.apache.poi:poi-ooxml:jar:3.14:compile
+[INFO] |  |  +- org.apache.poi:poi-ooxml-schemas:jar:3.14:compile
+[INFO] |  |  \- com.github.virtuald:curvesapi:jar:1.03:compile
+[INFO] |  +- org.apache.xmlbeans:xmlbeans:jar:2.6.0:compile
+[INFO] |  |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |  +- org.springframework:spring-context-support:jar:4.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.2.1.RELEASE:compile
+[INFO] |  |  \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- com.alibaba:dubbo:jar:2.5.3:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  |  \- org.jboss.netty:netty:jar:3.2.5.Final:compile
+[INFO] |  +- com.101tec:zkclient:jar:0.9:compile
+[INFO] |  |  \- org.slf4j:slf4j-api:jar:1.6.1:compile
+[INFO] |  +- org.apache.zookeeper:zookeeper:jar:3.4.9:compile
+[INFO] |  |  +- jline:jline:jar:0.9.94:compile
+[INFO] |  |  |  \- junit:junit:jar:3.8.1:compile
+[INFO] |  |  \- io.netty:netty:jar:3.10.5.Final:compile
+[INFO] |  \- com.pamirs.pradar:pradar-core:jar:1.0.0-SNAPSHOT:compile
+[INFO] |     \- commons-lang:commons-lang:jar:2.6:compile
+[INFO] \- org.logback-extensions:logback-ext-spring:jar:0.1.4:compile
+[INFO]    \- ch.qos.logback:logback-classic:jar:1.1.7:compile (version managed from 1.1.1)
+[INFO]       \- ch.qos.logback:logback-core:jar:1.1.7:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building consumer-web Maven Webapp 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ consumer-web ---
+[INFO] com.deppon.component:consumer-web:war:0.0.1-SNAPSHOT
+[INFO] \- junit:junit:jar:3.8.1:test
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] dubbo ............................................. SUCCESS [0.925s]
+[INFO] dubbo-consumer .................................... SUCCESS [0.017s]
+[INFO] dubbo-client ...................................... SUCCESS [0.503s]
+[INFO] dubbo-provider .................................... SUCCESS [0.810s]
+[INFO] provider-web ...................................... SUCCESS [0.305s]
+[INFO] consumer-web Maven Webapp ......................... SUCCESS [0.019s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.492s
+[INFO] Finished at: Fri Dec 23 17:37:26 CST 2016
+[INFO] Final Memory: 19M/224M
+[INFO] ------------------------------------------------------------------------

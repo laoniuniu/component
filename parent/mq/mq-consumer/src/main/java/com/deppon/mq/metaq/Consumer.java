@@ -24,7 +24,7 @@ public class Consumer  implements IMqConsumer<MqContentDO> {
 			throws MonoMqException {
 		//TODO 重复消息校验
 		MonoMqResultDTO monoMqResultDTO = new MonoMqResultDTO();
-		if(mqContentDO==null || mqContentDO.getContent() == null ){
+		if(mqContentDO==null || mqContentDO.getContent() == null ) {
 			logger.error("consume error： 参数不存在");
             monoMqResultDTO.setErrorCode("consume error： 参数不存在");
             //消息重发
