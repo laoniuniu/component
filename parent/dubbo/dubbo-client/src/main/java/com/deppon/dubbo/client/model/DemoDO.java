@@ -1,10 +1,16 @@
 package com.deppon.dubbo.client.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class DemoDO {
-    private Long id;
+public class DemoDO implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3300649379610987399L;
+
+	private Long id;
 
     private String tVarchar;
 
