@@ -5,7 +5,7 @@ import java.math.MathContext;
 import java.util.Currency;
 
 /**
- * {@link Money} �Ĺ������������ڴ�ʹ���Ż����������Ҫ����߾���ʱʹ�á�
+ * {@link Money}
  *
  * @author fanshen
  */

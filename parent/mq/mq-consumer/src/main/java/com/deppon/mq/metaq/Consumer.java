@@ -20,7 +20,7 @@ public class Consumer  implements IMqConsumer<MqContentDO> {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	
-	public MonoMqResultDTO consume(MqContentDO mqContentDO)
+	public MonoMqResultDTO consume (MqContentDO mqContentDO)
 			throws MonoMqException {
 		//TODO 重复消息校验
 		MonoMqResultDTO monoMqResultDTO = new MonoMqResultDTO();

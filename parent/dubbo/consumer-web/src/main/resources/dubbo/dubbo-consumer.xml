@@ -4,8 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<!-- 合伙人付款 -->
+
  	<dubbo:reference id="dubboDemoService" interface="com.deppon.dubbo.client.api.DubboDemoService" version="1.0.0" group="${dubbo.dubbo_env}"/>
+
+
 
 </beans>
 

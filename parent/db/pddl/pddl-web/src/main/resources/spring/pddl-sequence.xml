@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="true">
+ 
+ 	<bean id="statNoSeq" class="com.pamirs.pddl.client.sequence.impl.GroupSequence"
+          init-method="init">
+        <!-- sequence生成器名 -->
+        <property name="name" value="stat_no_seq"/> <!--序列表sequence中的name字段的名字-->
+        <!-- sequence依赖的DataSource DAO -->
+        <property name="sequenceDao" ref="sequenceDao"/>
+    </bean>
+    
+    <!--sequence DAO-->
+    <bean id="sequenceDao" class="com.pamirs.pddl.client.sequence.impl.GroupSequenceDao"
+          init-method="init">
+        <!-- appName，必填 -->
+        <property name="appName" value="CUBC-BILL"/>
+        <!-- 数据源的个数，和dbGroupKeys的数量相同，如果大于dbGroupKeys的数量，可理解为预留"-OFF"的源，方便以后扩展 -->
+        <property name="dscount" value="1"/>
+        <!-- dbGroupKeys 必填 -->
+        <!-- 如果在末尾插入"-OFF",该源将被关掉，该源占据的SQL段会被保留" -->
+        <!-- 当dbGroupKeys中配置的个数小于dscount的值的时候，默认配置了"-OFF"的源 -->
+        <property name="dbGroupKeys">
+            <list>
+                <value>CUBC-BILL-GROUP</value> <!--group名称-->
+                <!-- 允许配置多个group -->
+                <!-- <value>{group名称}</value> -->
+            </list>
+        </property>
+        <!-- 内步长 ,默认为1000，取值在1-100000之间 -->
+        <property name="innerStep" value="1000"/>
+        <!-- 是否开启自适应，默认是false -->
+        <property name="adjust" value="true"/>
+        <!-- 重试次数，在多个gourpDataSource的场景下，建议设置成1-2次。默认为2次 -->
+        <property name="retryTimes" value="2"/>
+        <!-- 使用的表的表名 ，默认为sequence -->
+        <property name="tableName" value="sequence"/>
+        <!-- id生成器的字段名,默认为name -->
+        <property name="nameColumnName" value="name"/>
+        <!-- 存值的列的字段名,默认为value -->
+        <property name="valueColumnName" value="value"/>
+        <!-- 存修改时间的字段名 ,默认为gmt_modified -->
+        <property name="gmtModifiedColumnName" value="modify_date"/>
+    </bean>
+
+</beans>
