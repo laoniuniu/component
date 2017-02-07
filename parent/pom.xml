@@ -192,6 +192,7 @@
   	<module>cache</module>	
   	<module>db</module>
     <module>commons</module>
+    <module>kibana</module>
   </modules>
   
   

@@ -27,7 +27,7 @@ public class ConSumerDemoConntroller {
 	@ResponseBody
 	public String insertConntroller(DemoDO demoDO) {
 		Result<Integer> result = dubboDemoService.insertService(demoDO);
-		return "insert id："+ result.getData();
+		return "insert id: "+ result.getData();
 	}
 	/**
 	 * dubbo del service
@@ -37,7 +37,7 @@ public class ConSumerDemoConntroller {
 	@ResponseBody
 	public String deleteConntroller(DemoDO demoDO) {
 		Result<Integer> result = dubboDemoService.deleteService(demoDO);
-		return "delete id：" + result.getData();
+		return "delete id: " + result.getData();
 	}
 	
 	/**
@@ -48,7 +48,7 @@ public class ConSumerDemoConntroller {
 	@ResponseBody
 	public String updateConntroller(DemoDO demoDO) {
 		Result<Integer> result = dubboDemoService.updateService(demoDO);
-		return "update id：" +result.getData();
+		return "update id: " +result.getData();
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public class ConSumerDemoConntroller {
 	@ResponseBody
 	public String selectConntroller(DemoDO demoDO) {
 		ResultList<DemoDO> resList = dubboDemoService.selectService(demoDO);
-		return "select body：" + resList.getData().gettLongtext();
+		return "select body: " + resList.getData().gettVarchar();
 	}
 	
 }

@@ -73,7 +73,7 @@
 	            <groupId>com.alibaba</groupId>
 	            <artifactId>dubbo</artifactId>
 	            <version>${dubbo_version}</version>
-     	</dependency>
+     		</dependency>
      	    <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>

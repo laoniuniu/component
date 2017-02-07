@@ -27,5 +27,6 @@
   </properties>
   <modules>
     <module>pddl</module>
+    <module>ladb</module>
   </modules>
 </project>

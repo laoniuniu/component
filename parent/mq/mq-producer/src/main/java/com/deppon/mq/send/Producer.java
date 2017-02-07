@@ -16,8 +16,8 @@ public class Producer {
 	
 	public static void main(String[] args){  
 		MqContentDO mqDo = new MqContentDO();
-		mqDo.setId("11111");
-		mqDo.setContent("AAAAAAAAAAAAAAAAAAA");
+		mqDo.setId("345345345");
+		mqDo.setContent("前台系统集成研发部，消息中心！");
         DefaultMQProducer producer = new DefaultMQProducer("Producer");
         producer.setNamesrvAddr("mq.deppon.namesrv:9876");
         producer.setProducerGroup("PRODUCER_GROUP");
@@ -41,14 +41,14 @@ public class Producer {
             System.out.println("id:" + result.getMsgId() +  
                     " result:" + result.getSendStatus());  
               
-            msg = new Message("PullTopic",   
+            msg = new Message("PullTopic",
                     "pull",   
                     "1",   
                     "Just for test.".getBytes());  
               
             result = producer.send(msg);  */
         
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();  
         }finally{  
             producer.shutdown();  

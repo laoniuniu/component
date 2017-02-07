@@ -17,7 +17,7 @@
     <bean id="sequenceDao" class="com.pamirs.pddl.client.sequence.impl.GroupSequenceDao"
           init-method="init">
         <!-- appName，必填 -->
-        <property name="appName" value="CUBC-BILL"/>
+        <property name="appName" value="PDDL-DEMO"/>
         <!-- 数据源的个数，和dbGroupKeys的数量相同，如果大于dbGroupKeys的数量，可理解为预留"-OFF"的源，方便以后扩展 -->
         <property name="dscount" value="1"/>
         <!-- dbGroupKeys 必填 -->
@@ -25,7 +25,8 @@
         <!-- 当dbGroupKeys中配置的个数小于dscount的值的时候，默认配置了"-OFF"的源 -->
         <property name="dbGroupKeys">
             <list>
-                <value>CUBC-BILL-GROUP</value> <!--group名称-->
+                <value>PDDL_DEMO_DB_GROUP_00</value> <!--group名称-->
+                <value>PDDL_DEMO_DB_GROUP_01</value>
                 <!-- 允许配置多个group -->
                 <!-- <value>{group名称}</value> -->
             </list>

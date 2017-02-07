@@ -43,7 +43,7 @@ public class DubboDemoServiceImpl implements DubboDemoService {
 	public ResultList<DemoDO> selectService(DemoDO demoDO) {
 		ResultList<DemoDO> result = new ResultList<DemoDO>();
 		DemoDO demoDo = new DemoDO();
-		demoDo.settLongtext("你好!");
+		demoDo.settVarchar("hello, dubbo");
 		result.setData(demoDo);
 		return result;
 	}

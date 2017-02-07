@@ -2,16 +2,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-autowire="byName">
-
-    <bean id="dataSource" class="com.pamirs.pddl.jdbc.group.TGroupDataSource" init-method="init">
+	<!-- 不使用远程规则 -->
+    <!-- <bean id="dataSource" class="com.pamirs.pddl.jdbc.group.TGroupDataSource" init-method="init">
        <property name="appName" value="PDDL-TEST"/>
         <property name="dbGroupKey" value="PDDL-TEST-GROUP"/> 
-    </bean>
-    <!-- <bean id="dataSource" class="com.pamirs.pddl.client.jdbc.TDataSource" init-method="init">
-        <property name="appName" value="CUBC-BILL"/>
-        是否使用远程规则
+    </bean>  -->
+    <!-- 使用分库分分表规则 -->
+    <bean id="dataSource" class="com.pamirs.pddl.client.jdbc.TDataSource" init-method="init">
+        <property name="appName" value="PDDL-DEMO"/>
         <property name="dynamicRule" value="true"/>
-    </bean> -->
+    </bean>
     
     <import resource="pddl-sequence.xml"/>
 
@@ -24,5 +24,5 @@
           class="org.springframework.transaction.support.TransactionTemplate">
         <property name="transactionManager" ref="transactionManager"/>
     </bean>
-    
+    	
 </beans>
