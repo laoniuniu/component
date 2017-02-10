@@ -1,6 +1,7 @@
  <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans default-autowire="byName">
 
+	<!-- 消费者1定义 -->
     <bean id="consumer_demo" class="com.deppon.mq.metaq.Consumer"/>
     
     <bean id="upVerifyAmountMsgConsumerManager" class="com.pamirs.mq.client.MqConsumerConcurrentlyManager" init-method="init">

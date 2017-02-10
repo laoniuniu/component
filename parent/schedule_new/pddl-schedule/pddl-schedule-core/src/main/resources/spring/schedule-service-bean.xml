@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+
+    <bean id="commonScheduleItemDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.dao.ScheduleItemDAO"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleFactory"></property>
+    </bean>
+
+    <bean id="commonScheduleService" class="com.deppon.cubc.schedule.service.ScheduleServiceImpl" >
+        <property name="commonScheduleItemDAO" ref="commonScheduleItemDAO"></property>
+    </bean>
+
+    <bean id="commonScheduleManagerFactory" class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory"
+          init-method="init">
+        <property name="zkConfig">
+            <map>
+                <entry key="zkConnectString" value="10.230.20.104:2181" />
+                <entry key="rootPath" value="/schedule/pddl/demo" />
+                <entry key="zkSessionTimeout" value="60000" />
+                <entry key="userName" value="" />
+                <entry key="password" value="" />
+                <entry key="isCheckParentPath" value="true" />
+            </map>
+        </property>
+    </bean>
+    
+    <bean id="scheduleService" class="com.deppon.schedule.service.ScheduleServiceImpl"/>
+
+	<bean id="commonTaskActionManager" class ="com.deppon.schedule.service.TaskActionManagerFactory"></bean>
+	
+    <bean id="commonScheduleSystemInfo"
+          class="com.deppon.cubc.schedule.service.CommonScheduleSystemInfo">
+        <property name="ownSign" value="${ownSign}"></property>
+    </bean>
+	
+	<!--定时任务执行task -->
+	<bean id="pddlScheduleTask" class="com.deppon.pddl.schedule.task.PddlScheduleTask"/>
+	
+	
+    <!--定时任务执行Action -->
+	<bean id="pddlScheduleAction"
+          class="com.deppon.pddl.schedule.action.PddlScheduleAction">
+    </bean>
+	<bean id="cubcBillSupplierCreate" class="com.deppon.cubc.schedule.service.BaseScheduleTask">
+		<property name="taskType" value="pddlScheduleAction"></property>
+	</bean>
+</beans>

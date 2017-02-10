@@ -193,6 +193,7 @@
   	<module>db</module>
     <module>commons</module>
     <module>kibana</module>
+    <module>schedule_new</module>
   </modules>
   
   
