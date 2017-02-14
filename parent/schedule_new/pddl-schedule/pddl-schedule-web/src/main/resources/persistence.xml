@@ -6,7 +6,8 @@
     
 	<!--普通Schedule任务PDDL begin-->
     <bean id="dataSourceSchedule" class="com.pamirs.pddl.client.jdbc.TDataSource" init-method="init">
-        <property name="appName" value="PDDL-DEMO"/>
+       <!--  <property name="appName" value="PDDL-DEMO"/> -->
+        <property name="appName" value="CUBC-BILL-TASK"/>
         <property name="dynamicRule" value="true"/>
     </bean>
 
