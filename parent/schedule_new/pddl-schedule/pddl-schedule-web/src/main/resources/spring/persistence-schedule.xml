@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+           <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+           <!--xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+         <!--http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" default-autowire="byName">-->
+
+
+    <!--普通Schedule任务PDDL begin-->
+   <bean id="dataSourceSchedule" class="com.pamirs.pddl.client.jdbc.TDataSource" init-method="init">
+        <property name="appName" value="CUBC-TRADE-NORMAL"/>
+        <property name="dynamicRule" value="true"/>
+    </bean>
+
+    <bean id="sqlSessionScheduleFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath*:spring/sqlschedule/ScheduleItemMapper.xml"/>
+        <property name="dataSource" ref="dataSourceSchedule"/>
+    </bean>
+
+    <bean id="transactionTemplateSchedule" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager">
+            <ref local="transactionManagerSchedule"/>
+        </property>
+    </bean>
+
+    <bean id="transactionManagerSchedule" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref local="dataSourceSchedule"/>
+        </property>
+    </bean>
+
+    <bean id="dataSourceScheduleTruncate" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://${schedule.truncate.database.address}:${schedule.truncate.database.port}/${schedule.truncate.database.name}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+        </property>
+        <property name="username">
+            <value>${schedule.truncate.database.username}</value>
+        </property>
+        <property name="password">
+            <value>${schedule.truncate.database.password}</value>
+        </property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="maxWait" value="500"></property>
+    </bean>
+
+    <bean id="sqlSessionScheduleTruncateFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:spring/sqlschedule/ScheduleItemTruncateMapper.xml"></property>
+        <property name="dataSource" ref="dataSourceScheduleTruncate" />
+    </bean>
+    <!--普通Schedule任务PDDL end-->
+
+    <!-- ============================================================================== -->
+
+    <!--结算事件表PDDL begin-->
+    <bean id="dataSourceScheduleTrade" class="com.pamirs.pddl.client.jdbc.TDataSource" init-method="init">
+        <property name="appName" value="${pddl.cubc.trade.appName}"/>
+        <property name="dynamicRule" value="true"/>
+    </bean>
+
+    <bean id="sqlSessionScheduleTradeFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceScheduleTrade"/>
+        <property name="mapperLocations" value="classpath*:spring/sqlschedule/ScheduleTradeMapper.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.deppon.cubc.schedule.trade.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionScheduleTradeFactory"/>
+    </bean>
+
+    <bean id="transactionTemplateScheduleTrade" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager">
+            <ref local="transactionManagerScheduleTrade"/>
+        </property>
+    </bean>
+
+    <bean id="transactionManagerScheduleTrade" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref local="dataSourceScheduleTrade"/>
+        </property>
+    </bean>
+    <!--结算事件表PDDL end-->
+
+    <!-- ============================================================================== -->
+
+    <!--结算事件表数据迁移配置 start-->
+    <bean id="dataSourceScheduleTradeTruncate0" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://${schedule.trade.truncate.database.address0}:${schedule.trade.truncate.database.port0}/${schedule.trade.truncate.database.name0}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+        </property>
+        <property name="username">
+            <value>${schedule.trade.truncate.database.username0}</value>
+        </property>
+        <property name="password">
+            <value>${schedule.trade.truncate.database.password0}</value>
+        </property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="maxWait" value="500"></property>
+    </bean>
+
+    <bean id="sqlSessionScheduleTradeTruncateFactory0" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:spring/sqlschedule/ScheduleItemTradeTruncateMapper0.xml"></property>
+        <property name="dataSource" ref="dataSourceScheduleTradeTruncate0" />
+    </bean>
+
+    <bean id="dataSourceScheduleTradeTruncate1" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://${schedule.trade.truncate.database.address1}:${schedule.trade.truncate.database.port1}/${schedule.trade.truncate.database.name1}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+        </property>
+        <property name="username">
+            <value>${schedule.trade.truncate.database.username1}</value>
+        </property>
+        <property name="password">
+            <value>${schedule.trade.truncate.database.password1}</value>
+        </property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="maxWait" value="500"></property>
+    </bean>
+
+    <bean id="sqlSessionScheduleTradeTruncateFactory1" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:spring/sqlschedule/ScheduleItemTradeTruncateMapper1.xml"></property>
+        <property name="dataSource" ref="dataSourceScheduleTradeTruncate1" />
+    </bean>
+
+    <bean id="dataSourceScheduleTradeTruncate2" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://${schedule.trade.truncate.database.address2}:${schedule.trade.truncate.database.port2}/${schedule.trade.truncate.database.name2}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+        </property>
+        <property name="username">
+            <value>${schedule.trade.truncate.database.username2}</value>
+        </property>
+        <property name="password">
+            <value>${schedule.trade.truncate.database.password2}</value>
+        </property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="maxWait" value="500"></property>
+    </bean>
+
+    <bean id="sqlSessionScheduleTradeTruncateFactory2" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:spring/sqlschedule/ScheduleItemTradeTruncateMapper2.xml"></property>
+        <property name="dataSource" ref="dataSourceScheduleTradeTruncate2" />
+    </bean>
+
+    <bean id="dataSourceScheduleTradeTruncate3" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://${schedule.trade.truncate.database.address3}:${schedule.trade.truncate.database.port3}/${schedule.trade.truncate.database.name3}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+        </property>
+        <property name="username">
+            <value>${schedule.trade.truncate.database.username3}</value>
+        </property>
+        <property name="password">
+            <value>${schedule.trade.truncate.database.password3}</value>
+        </property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="maxWait" value="500"></property>
+    </bean>
+
+    <bean id="sqlSessionScheduleTradeTruncateFactory3" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:spring/sqlschedule/ScheduleItemTradeTruncateMapper3.xml"></property>
+        <property name="dataSource" ref="dataSourceScheduleTradeTruncate3" />
+    </bean>
+
+    <bean id="dataSourceScheduleTradeTruncate4" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://${schedule.trade.truncate.database.address4}:${schedule.trade.truncate.database.port4}/${schedule.trade.truncate.database.name4}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+        </property>
+        <property name="username">
+            <value>${schedule.trade.truncate.database.username4}</value>
+        </property>
+        <property name="password">
+            <value>${schedule.trade.truncate.database.password4}</value>
+        </property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="maxWait" value="500"></property>
+    </bean>
+
+    <bean id="sqlSessionScheduleTradeTruncateFactory4" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:spring/sqlschedule/ScheduleItemTradeTruncateMapper4.xml"></property>
+        <property name="dataSource" ref="dataSourceScheduleTradeTruncate4" />
+    </bean>
+
+    <bean id="dataSourceScheduleTradeTruncate5" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://${schedule.trade.truncate.database.address5}:${schedule.trade.truncate.database.port5}/${schedule.trade.truncate.database.name5}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+        </property>
+        <property name="username">
+            <value>${schedule.trade.truncate.database.username5}</value>
+        </property>
+        <property name="password">
+            <value>${schedule.trade.truncate.database.password5}</value>
+        </property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="maxWait" value="500"></property>
+    </bean>
+
+    <bean id="sqlSessionScheduleTradeTruncateFactory5" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:spring/sqlschedule/ScheduleItemTradeTruncateMapper5.xml"></property>
+        <property name="dataSource" ref="dataSourceScheduleTradeTruncate5" />
+    </bean>
+
+    <bean id="dataSourceScheduleTradeTruncate6" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://${schedule.trade.truncate.database.address6}:${schedule.trade.truncate.database.port6}/${schedule.trade.truncate.database.name6}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+        </property>
+        <property name="username">
+            <value>${schedule.trade.truncate.database.username6}</value>
+        </property>
+        <property name="password">
+            <value>${schedule.trade.truncate.database.password6}</value>
+        </property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="maxWait" value="500"></property>
+    </bean>
+
+    <bean id="sqlSessionScheduleTradeTruncateFactory6" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:spring/sqlschedule/ScheduleItemTradeTruncateMapper6.xml"></property>
+        <property name="dataSource" ref="dataSourceScheduleTradeTruncate6" />
+    </bean>
+
+    <bean id="dataSourceScheduleTradeTruncate7" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://${schedule.trade.truncate.database.address7}:${schedule.trade.truncate.database.port7}/${schedule.trade.truncate.database.name7}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+        </property>
+        <property name="username">
+            <value>${schedule.trade.truncate.database.username7}</value>
+        </property>
+        <property name="password">
+            <value>${schedule.trade.truncate.database.password7}</value>
+        </property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="maxWait" value="500"></property>
+    </bean>
+
+    <bean id="sqlSessionScheduleTradeTruncateFactory7" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:spring/sqlschedule/ScheduleItemTradeTruncateMapper7.xml"></property>
+        <property name="dataSource" ref="dataSourceScheduleTradeTruncate7" />
+    </bean>
+    <!--结算事件表数据迁移配置 end-->
+
+    <!-- ============================================================================== -->
+
+</beans>

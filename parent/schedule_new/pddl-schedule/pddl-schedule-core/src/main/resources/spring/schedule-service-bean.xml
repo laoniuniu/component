@@ -4,13 +4,71 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-autowire="byName">
 
+ 	 <!--commonTread action manager factory  -->
+    <bean id="commonTradeTaskActionManager" class="com.deppon.cubc.schedule.trade.service.TaskActionManagerFactory"/>
+    <!--ScheduleTradeItem数据库连接dao-->
+    <bean id="commonScheduleTradeItemDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.trade.dao.ScheduleTradeItemDAO"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTradeFactory"></property>
+    </bean>
+    <bean id="scheduleService"  class="com.deppon.cubc.schedule.trade.service.ScheduleServiceImpl">
+        <property name="commonScheduleTradeItemDAO" ref="commonScheduleTradeItemDAO"></property>
+    </bean>
+    
+     <!--common action manager factory  -->
+    <bean id="commonTaskActionManager" class="com.deppon.cubc.schedule.service.TaskActionManagerFactory"/>
     <bean id="commonScheduleItemDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="com.deppon.cubc.schedule.dao.ScheduleItemDAO"></property>
         <property name="sqlSessionFactory" ref="sqlSessionScheduleFactory"></property>
     </bean>
-
-    <bean id="commonScheduleService" class="com.deppon.cubc.schedule.service.ScheduleServiceImpl" >
+    <bean id="commonScheduleService"  class="com.deppon.cubc.schedule.service.ScheduleServiceImpl">
         <property name="commonScheduleItemDAO" ref="commonScheduleItemDAO"></property>
+    </bean>
+    
+     <!-- 定时清理数据DAO -->
+    <bean id="commonScheduleItemTruncateDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.dao.ScheduleItemTruncateDAO"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTruncateFactory"></property>
+    </bean>
+
+    <bean id="scheduleTradeItemTruncateDAO0" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.trade.dao.ScheduleTradeItemTruncateDAO0"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTradeTruncateFactory0"></property>
+    </bean>
+
+    <bean id="scheduleTradeItemTruncateDAO1" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.trade.dao.ScheduleTradeItemTruncateDAO1"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTradeTruncateFactory1"></property>
+    </bean>
+
+    <bean id="scheduleTradeItemTruncateDAO2" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.trade.dao.ScheduleTradeItemTruncateDAO2"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTradeTruncateFactory2"></property>
+    </bean>
+
+    <bean id="scheduleTradeItemTruncateDAO3" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.trade.dao.ScheduleTradeItemTruncateDAO3"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTradeTruncateFactory3"></property>
+    </bean>
+
+    <bean id="scheduleTradeItemTruncateDAO4" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.trade.dao.ScheduleTradeItemTruncateDAO4"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTradeTruncateFactory4"></property>
+    </bean>
+
+    <bean id="scheduleTradeItemTruncateDAO5" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.trade.dao.ScheduleTradeItemTruncateDAO5"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTradeTruncateFactory5"></property>
+    </bean>
+
+    <bean id="scheduleTradeItemTruncateDAO6" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.trade.dao.ScheduleTradeItemTruncateDAO6"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTradeTruncateFactory6"></property>
+    </bean>
+
+    <bean id="scheduleTradeItemTruncateDAO7" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.deppon.cubc.schedule.trade.dao.ScheduleTradeItemTruncateDAO7"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionScheduleTradeTruncateFactory7"></property>
     </bean>
 
     <bean id="commonScheduleManagerFactory" class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory"
@@ -27,24 +85,24 @@
         </property>
     </bean>
     
-    <bean id="scheduleService" class="com.deppon.schedule.service.ScheduleServiceImpl"/>
-
-	<bean id="commonTaskActionManager" class ="com.deppon.schedule.service.TaskActionManagerFactory"></bean>
-	
-    <bean id="commonScheduleSystemInfo"
-          class="com.deppon.cubc.schedule.service.CommonScheduleSystemInfo">
+    <bean id="commonScheduleSystemInfo" 
+    	  class="com.deppon.cubc.schedule.trade.service.CommonScheduleTradeSystemInfo">
         <property name="ownSign" value="${ownSign}"></property>
     </bean>
+    
+    
+	<!--定时清理普通schedule任务-->
+	<bean id="delayMsgTransferScheduleTask" class="com.deppon.cubc.schedule.service.DelayMsgTransferScheduleTask"></bean>
+	
 	
 	<!--定时任务执行task -->
-	<bean id="pddlScheduleTask" class="com.deppon.pddl.schedule.task.PddlScheduleTask"/>
+	<bean id="pddlScheduleTask" class="com.deppon.pddl.schedule.task.PddlScheduleTask"></bean>
 	
 	
     <!--定时任务执行Action -->
-	<bean id="pddlScheduleAction"
-          class="com.deppon.pddl.schedule.action.PddlScheduleAction">
-    </bean>
-	<bean id="cubcBillSupplierCreate" class="com.deppon.cubc.schedule.service.BaseScheduleTask">
-		<property name="taskType" value="pddlScheduleAction"></property>
+	<bean id="pddlScheduleActionTask" class="com.deppon.cubc.schedule.trade.service.BaseScheduleTask" >
+		 <property name="taskType" value="PDDL_SCHEDULL_ACTION_TASKTYPE"></property>
 	</bean>
+	
+	
 </beans>

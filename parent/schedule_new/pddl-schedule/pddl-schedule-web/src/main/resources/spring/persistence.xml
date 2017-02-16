@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+           <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+           <!--xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+         <!--http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" default-autowire="byName">-->
+
+
+    <!-- ============================================================================== -->
+
+    <!-- 分库分表应用PDDL begin -->
+    <bean id="dataSource" class="com.pamirs.pddl.client.jdbc.TDataSource" init-method="init">
+        <property name="appName" value="${pddl.cubc.trade.appName}"/>
+        <property name="dynamicRule" value="true"/>
+    </bean>
+
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager">
+            <ref local="transactionManager"/>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref local="dataSource"/>
+        </property>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath*:spring/sqlmap/*Mapper.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 分库分表应用PDDL end-->
+
+    <!-- ============================================================================== -->
+
+    <!-- 数据源 普通类型 begin -->
+	<bean id="dataSourceNormal" class="com.pamirs.pddl.client.jdbc.TDataSource" init-method="init">
+        <!--<property name="appName" value="${pddl.cubc.trade.normal.appName}"/>-->
+        <property name="appName" value="CUBC-TRADE-NORMAL"/>
+        <property name="dynamicRule" value="true"/>
+    </bean>
+
+    <bean id="transactionTemplateNormal" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager">
+            <ref local="transactionManagerNormal"/>
+        </property>
+    </bean>
+
+    <bean id="transactionManagerNormal" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref local="dataSourceNormal"/>
+        </property>
+    </bean>
+
+    <bean id="sqlSessionNormalFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceNormal"/>
+        <property name="mapperLocations" value="classpath*:spring/normalsqlmap/*Mapper.xml"/>
+    </bean>
+    <!-- 数据源 普通类型 end -->
+
+
+    <!-- ============================================================================== -->
+
+    <!-- 数据源 基础资料 begin -->
+    <bean id="dataSourceBase" class="com.pamirs.pddl.client.jdbc.TDataSource" init-method="init">
+        <property name="appName" value="${pddl.cubc.trade.base.appName}"/>
+        <property name="dynamicRule" value="true"/>
+    </bean>
+
+    <bean id="transactionTemplateBase" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager">
+            <ref local="transactionManagerBase"/>
+        </property>
+    </bean>
+
+    <bean id="transactionManagerBase" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref local="dataSourceBase"/>
+        </property>
+    </bean>
+
+    <bean id="sqlSessionBaseFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceBase"/>
+        <property name="mapperLocations" value="classpath*:spring/basesqlmap/*Mapper.xml"/>
+    </bean>
+    <!-- 数据源 基础资料 end -->
+
+    <!-- ============================================================================== -->
+
+    <!-- 数据源 客户维度 begin -->
+	 <bean id="dataSourceCustomer" class="com.pamirs.pddl.client.jdbc.TDataSource" init-method="init">
+        <property name="appName" value="${pddl.cubc.trade.user.appName}"/>
+        <property name="dynamicRule" value="true"/>
+    </bean>
+
+    <bean id="transactionTemplateCustomer" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager">
+            <ref local="transactionManagerCustomer"/>
+        </property>
+    </bean>
+
+    <bean id="transactionManagerCustomer" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref local="dataSourceCustomer"/>
+        </property>
+    </bean>
+
+    <bean id="sqlSessionFactoryCustomer" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceCustomer"/>
+        <property name="mapperLocations" value="classpath*:spring/customersqlmap/*Mapper.xml"/>
+    </bean>
+    <!-- 数据源 客户维度 end -->
+
+    <!-- ============================================================================== -->
+
+</beans>

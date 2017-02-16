@@ -12,6 +12,10 @@
 	<context:component-scan base-package="com.deppon.pddl.schedule"/>	
 
     <import resource="classpath:spring/persistence.xml"/>
+    <import resource="classpath*:spring/pddl-sequence.xml"/>
+    <import resource="classpath:spring/persistence-schedule.xml"/>
 	<import resource="classpath:spring/schedule-service-bean.xml"/>
+	
+
 	
 </beans>

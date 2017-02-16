@@ -12,15 +12,57 @@
      <dependencyManagement>
         <dependencies>
 	        <dependency>
+				<groupId>com.deppon.cubc.schedule</groupId>
+				<artifactId>cubc-schedule-client</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			 <dependency>
+				<groupId>com.deppon.cubc.schedule</groupId>
+				<artifactId>cubc-schedule-api</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			
+			  <!-- cubc schedule begin-->
+            <dependency>
+                <groupId>com.deppon.cubc.schedule</groupId>
+                <artifactId>cubc-schedule-api</artifactId>
+                <version>${cubc_schedule_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.deppon.cubc.schedule</groupId>
+                <artifactId>cubc-schedule-client</artifactId>
+                <version>${cubc_schedule_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.deppon.cubc.schedule</groupId>
+                <artifactId>cubc-schedule-trade-api</artifactId>
+                <version>${cubc_schedule_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.deppon.cubc.schedule</groupId>
+                <artifactId>cubc-schedule-trade-client</artifactId>
+                <version>${cubc_schedule_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.deppon.cubc.schedule</groupId>
+                <artifactId>cubc-schedule-core</artifactId>
+                <version>${cubc_schedule_version}</version>
+            </dependency>
+            <!-- cubc schedule end-->
+			
+			
+			
+			
+			<dependency>
+	     		<groupId>com.deppon.component</groupId>
+	           	<artifactId>commons</artifactId>
+	           	<version>${project.version}</version>
+	     	</dependency>
+			 <dependency>
 		    	<groupId>com.deppon.component</groupId>
 		  		<artifactId>pddl-schedule-core</artifactId>
-		  		<version>${project.version}</version>
-		    </dependency>	
-        	<dependency>
-				<groupId>com.deppon.component</groupId>
-				<artifactId>schedule-api</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-			</dependency>
+		  		 <version>0.0.1-SNAPSHOT</version>
+		    </dependency>
 			<dependency>
 	            <groupId>com.deppon.component</groupId>
 	            <artifactId>schedule-client</artifactId>
@@ -61,12 +103,16 @@
                 <artifactId>spring-context-support</artifactId>
                 <version>${spring_version}</version>
             </dependency>
-            
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-web</artifactId>
                 <version>${spring_version}</version>
             </dependency>
+            <dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				 <version>${spring_version}</version>
+			</dependency>
              <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
@@ -135,6 +181,42 @@
 				<groupId>org.logback-extensions</groupId>
 				<artifactId>logback-ext-spring</artifactId>
 				<version>0.1.4</version>
+			</dependency>
+			 <dependency>
+               <groupId>org.mybatis</groupId>
+               <artifactId>mybatis-spring</artifactId>
+               <version>${mybatis_spring_version}</version>
+           </dependency>
+           <dependency>
+               <groupId>org.mybatis</groupId>
+               <artifactId>mybatis</artifactId>
+               <version>${mybatis_version}</version>
+           </dependency>
+             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring_version}</version>
+            </dependency>
+            
+              <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper_version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+			   <groupId>com.google.code.gson</groupId>
+			   <artifactId>gson</artifactId>
+			   <version>2.7</version>
 			</dependency>
         </dependencies>
      </dependencyManagement>

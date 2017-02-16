@@ -13,6 +13,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
+  
+	<dependency>
+		<groupId>com.deppon.component</groupId>
+		<artifactId>pddl-client</artifactId>
+	</dependency>
+	
+	
  	<dependency>
         <groupId>com.pamirs.pddl</groupId>
         <artifactId>pddl-client</artifactId>
@@ -23,10 +30,6 @@
             </exclusion>
         </exclusions>
     </dependency>
-	<dependency>
-		<groupId>com.deppon.component</groupId>
-		<artifactId>pddl-client</artifactId>
-	</dependency>
 	
     <dependency>
 		<groupId>org.mybatis</groupId>

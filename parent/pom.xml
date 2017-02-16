@@ -36,6 +36,7 @@
 		<commons_dbcp_version>1.4</commons_dbcp_version>
 		<zookeeper_version>3.4.9</zookeeper_version>
 		<zkclient_version>0.9</zkclient_version>
+		<cubc_schedule_version>1.0-SNAPSHOT</cubc_schedule_version>
 		<!-- 暂未引入 -->
 		<apache_commons_beanutils_version>1.9.2</apache_commons_beanutils_version>
 		<apache_commons_fileupload_version>1.3.1</apache_commons_fileupload_version>

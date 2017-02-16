@@ -21,63 +21,37 @@
     	<groupId>com.deppon.component</groupId>
   		<artifactId>pddl-schedule-core</artifactId>
     </dependency>
-     <dependency>
-          <groupId>com.101tec</groupId>
-          <artifactId>zkclient</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-webmvc</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-web</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context-support</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>org.apache.httpcomponents</groupId>
-          <artifactId>httpclient</artifactId>
-      </dependency>
-<dependency>
-	<groupId>commons-httpclient</groupId>
-	<artifactId>commons-httpclient</artifactId>
-	<version>3.0</version>
-	<exclusions>
-		<exclusion>
-			<artifactId>junit</artifactId>
-			<groupId>junit</groupId>
-		</exclusion>
-	</exclusions>
-</dependency>
-      <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-test</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>org.apache.poi</groupId>
-          <artifactId>poi</artifactId>
-          <version>3.12</version>
-      </dependency>
-      <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>servlet-api</artifactId>
-	<scope>provided</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-tx</artifactId>
-      </dependency>
+    
+       <!-- JDBC数据源 -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <!-- HTTPclient调用 -->
+      	<dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.0.1</version>
+        </dependency>
   </dependencies>
   
   
   <build>
+     <finalName>pddl-schedule-web</finalName>
+ 	 <filters>
+          <filter>${user.home}/.trade_config</filter>
+      </filters>
   	 <plugins>
         	<plugin>
 				<groupId>org.eclipse.jetty</groupId>
@@ -94,6 +68,6 @@
 			</plugin>
 	</plugins>
   
-    <finalName>pddl-schedule-web</finalName>
+   
   </build>
 </project>

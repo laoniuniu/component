@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
-import com.deppon.schedule.model.ScheduleItem;
+import com.deppon.cubc.schedule.model.ScheduleItem;
 import com.taobao.pamirs.schedule.IScheduleTaskDealSingle;
 import com.taobao.pamirs.schedule.TaskItemDefine;
 
@@ -38,7 +38,7 @@ public class PddlScheduleTask implements IScheduleTaskDealSingle<ScheduleItem> {
 	@Override
 	public boolean execute(ScheduleItem task, String ownSign) throws Exception {
 		// TODO Auto-generated method stub
-		return true;
+		return Boolean.TRUE;
 	}
 
 }

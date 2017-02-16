@@ -3,11 +3,10 @@ package com.deppon.pddl.schedule.action;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.deppon.cubc.schedule.api.CommonTaskAction;
+import com.deppon.cubc.schedule.common.Result;
+import com.deppon.cubc.schedule.model.ScheduleItem;
 import com.deppon.pddl.schedule.constants.PddlScheduleConstants;
-import com.deppon.pddl.schedule.task.PddlScheduleTask;
-import com.deppon.schedule.api.CommonTaskAction;
-import com.deppon.schedule.common.Result;
-import com.deppon.schedule.model.ScheduleItem;
 
 public class PddlScheduleAction implements CommonTaskAction {
 	

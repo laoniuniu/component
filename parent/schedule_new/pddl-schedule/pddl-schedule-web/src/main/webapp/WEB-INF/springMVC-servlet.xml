@@ -11,7 +11,7 @@
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
     <context:annotation-config/>
-    <context:component-scan base-package="com.deppon.cubc"/>
+    <context:component-scan base-package="com.deppon.pddl.schedule"/>
 
     <bean id="httpRequestHandlerAdapter"
           class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>
