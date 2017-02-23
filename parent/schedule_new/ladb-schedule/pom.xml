@@ -7,4 +7,49 @@
   </parent>
   <artifactId>ladb-schedule</artifactId>
   <packaging>pom</packaging>
+  <modules>
+  	<module>ddb-schedule</module>
+  	<module>ddb-schedule-pojo</module>
+  	<module>ddb-schedule-mapper</module>
+  	<module>ddb-schedule-service</module>
+  	<module>ddb-schedule-web</module>
+  </modules>
+  	<dependencies>
+  		<!-- schedule start -->
+  		<dependency>
+              <groupId>com.deppon.component</groupId>
+              <artifactId>schedule-api</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+          </dependency>
+          <dependency>
+              <groupId>com.deppon.component</groupId>
+              <artifactId>schedule-client</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+          </dependency>
+           <dependency>
+              <groupId>com.deppon.component</groupId>
+              <artifactId>schedule-core</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+          </dependency>
+  
+  	  <!-- schedule end -->
+  	  <!-- <dependency>
+              <groupId>com.deppon.component</groupId>
+              <artifactId>schedule</artifactId>
+              <version>${project.version}</version>
+          </dependency> -->
+  	</dependencies>
+  <build>
+		<!-- 配置插件 -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<port>8080</port>
+					<path>/</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

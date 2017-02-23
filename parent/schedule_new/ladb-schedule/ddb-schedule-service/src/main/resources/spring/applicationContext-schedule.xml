@@ -1,0 +1,38 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+ 	加载配置文件
+	<context:property-placeholder location="classpath:resource/*.properties" />
+	
+ 	<bean id="commonScheduleItemDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.deppon.schedule.dao.ScheduleItemDAO"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionScheduleFactory"></property>
+	</bean>
+	
+	<bean id="commonScheduleService" class="com.deppon.schedule.service.ScheduleServiceImpl" />
+	<bean id="dataSyncABean" class="com.ddbschedule.service.DataSyncABean"></bean>
+	<bean id="commonScheduleManagerFactory" class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory"
+		init-method="init">
+		<property name="zkConfig">
+           <map>
+              <entry key="zkConnectString" value="${zkConnectString}" />
+              <entry key="rootPath" value="${rootPath}" />
+              <entry key="zkSessionTimeout" value="${zkSessionTimeout}" />
+              <entry key="userName" value="${userName}" />
+              <entry key="password" value="${password}" />
+              <entry key="isCheckParentPath" value="${isCheckParentPath}" />
+           </map>
+       </property>	
+	</bean>
+	
+	action manager factory 
+	<bean id="commonTaskActionManager" class="com.deppon.schedule.service.TaskActionManagerFactory"/>
+</beans> -->
